@@ -28,14 +28,20 @@ var roleHarvester = {
             }
         }
         else {
-            target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
-            if(target) {
-                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-            }
-            }
+            var target_drop = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
             var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+            var target_tombstone = creep.pos.findClosestByRange(FIND_TOMBSTONES);
+            if(target_drop) {
+                if(creep.pickup(target_drop) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target_drop);
+                }
+            }
+            else if(target_tombstone) {
+                if(creep.pickup(target_tombstone) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target_tombstone);
+                }
+            }
+            else if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
