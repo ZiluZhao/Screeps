@@ -12,7 +12,7 @@ var roleSpawn= {
         if(harvesters.length < 6) {
             var newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
-            spawn.spawnCreep([WORK,WORK, WORK, WORK, WORK, CARRY,MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+            spawn.spawnCreep([WORK,WORK, WORK, WORK, CARRY, CARRY, CARRY,MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                 {memory: {role: 'harvester'}});
         }
         
