@@ -1,0 +1,5 @@
+designedRole='harvester'
+//role can be changed to others if nothing to harvest
+role='harvester';
+mineFrom=\\location;
+currentJob={'harvest', 'deposit'}
