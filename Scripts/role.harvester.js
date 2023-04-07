@@ -8,7 +8,7 @@ var roleHarvester = {
             creep.memory.currentJob=CURRENT_JOB_DEPOSIT;
         }
         //maybe change later
-        else if(!creep.memory.currentJob && creep.store[RESOURCE_ENERGY] == 0) {
+        else if(creep.memory.currentJob==CURRENT_JOB_DEPOSIT && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.currentJob=CURRENT_JOB_HARVEST;
         }
 
