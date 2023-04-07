@@ -34,10 +34,11 @@ var roleHarvester = {
             if(target_drop) {
                 if(creep.pickup(target_drop) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target_drop);
+                    
                 }
             }
             else if(target_tombstone) {
-                if(creep.pickup(target_tombstone) == ERR_NOT_IN_RANGE) {
+                if(creep.withdraw(target_tombstone) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target_tombstone);
                 }
             }
