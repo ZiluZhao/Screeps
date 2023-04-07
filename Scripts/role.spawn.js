@@ -13,7 +13,7 @@ var roleSpawn= {
             var newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
             spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'harvester'}});
+                {memory: {role: 'harvester', currentJob: 0}});
         }
         
         
@@ -21,7 +21,7 @@ var roleSpawn= {
             var newName = 'Upgrader' + Game.time;
             console.log('Spawning new upgrader: ' + newName);
             spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'upgrader'}});
+                {memory: {role: 'upgrader', currentJob: 0}});
         }
         
         
@@ -30,7 +30,7 @@ var roleSpawn= {
             var newName = 'builder' + Game.time;
             console.log('Spawning new builder: ' + newName);
             spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'builder'}});
+                {memory: {role: 'builder', currentJob: 0}});
         }
     
         if(spawn.spawning) {
