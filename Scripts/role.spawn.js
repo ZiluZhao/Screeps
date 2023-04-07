@@ -17,7 +17,7 @@ var roleSpawn= {
         }
         
         
-        else if(upgraders.length < 6) {
+        else if(upgraders.length < 2) {
             var newName = 'Upgrader' + Game.time;
             console.log('Spawning new upgrader: ' + newName);
             spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
@@ -31,6 +31,13 @@ var roleSpawn= {
             console.log('Spawning new builder: ' + newName);
             spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
                 {memory: {role: 'builder', currentJob: 0}});
+        }
+
+        else if(upgraders.length < 4) {
+            var newName = 'Upgrader' + Game.time;
+            console.log('Spawning new upgrader: ' + newName);
+            spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                {memory: {role: 'upgrader', currentJob: 0}});
         }
     
         if(spawn.spawning) {
