@@ -1,54 +1,38 @@
+const workerType = {
+    parts : [WORK, CARRY, MOVE],
+    cost : BODYPART_COST[WORK] + BODYPART_COST[CARRY] + BODYPART_COST[MOVE],
+};
+
 var roleSpawn= {
-    create: function(spawn){
-        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        console.log('Harvesters: ' + harvesters.length);
 
-        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        console.log('Upgraders: ' + harvesters.length);
+    // input 
+    //      structureSpawn, energyBudget(<capacity), roleType
+    // output
+    //      an array containing body parts
+    design : function(spawn, budget, role) {
+        if ( budget > spawn.room.energyCapacityAvailable) {
+            budget = spawn.room.energyCapacityAvailable;
+        }
+        var multi = Math.floor(budget/role.cost);
 
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        console.log('Buiders: ' + builders.length);
-    
-        if(harvesters.length < 6) {
-            var newName = 'Harvester' + Game.time;
-            console.log('Spawning new harvester: ' + newName);
-            spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'harvester', currentJob: 0}});
+        var i=0;
+        var partArray=[];
+        while (i <= multi) {
+            partArray=partArray.concat(role.parts);
         }
-        
-        
-        else if(upgraders.length < 2) {
-            var newName = 'Upgrader' + Game.time;
-            console.log('Spawning new upgrader: ' + newName);
-            spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'upgrader', currentJob: 0}});
-        }
-        
-        
-    
-        else if(builders.length < 2) {
-            var newName = 'builder' + Game.time;
-            console.log('Spawning new builder: ' + newName);
-            spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'builder', currentJob: 0}});
+        return partArray;
+    },
+
+    spawnWorker : function(spawn){
+        var workers = _.filter(spawn.room.find(FIND_MY_CREEPS), (creep) => creep.memory.bodyType == 'worker');
+        var requiredWorkers=spawn.room.memory.requiredHarvesters+spawn.room.memory.requiredUpgraders+spawn.room.memory.requiredBuilders;
+        if(workers.length<requiredWorkers) {
+            var newName = 'Worker' + Game.time;
+            partArray=this.design(spawn, spawn.room.energyCapacityAvailable, workerType);
+            spawn.spawnCreep(partArray, {memory : {bodyType: 'worker', role: 'unemployed', currentJob: 0, home : spawn.room.name}})
         }
 
-        else if(upgraders.length < 4) {
-            var newName = 'Upgrader' + Game.time;
-            console.log('Spawning new upgrader: ' + newName);
-            spawn.spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                {memory: {role: 'upgrader', currentJob: 0}});
-        }
-    
-        if(spawn.spawning) {
-            var spawningCreep = Game.creeps[spawn.spawning.name];
-            spawn.room.visual.text(
-                '🛠️' + spawningCreep.memory.role,
-                spawn.pos.x + 1,
-                spawn.pos.y,
-                {align: 'left', opacity: 0.8});
-        }
-    }
-}
+    },
+};
 
 module.exports = roleSpawn;
