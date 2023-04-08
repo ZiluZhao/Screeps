@@ -17,8 +17,9 @@ var roleSpawn= {
 
         var i=0;
         var partArray=[];
-        while (i <= multi) {
+        while (i <= multi-1) {
             partArray=partArray.concat(role.parts);
+            i=i+1;
         }
         return partArray;
     },
