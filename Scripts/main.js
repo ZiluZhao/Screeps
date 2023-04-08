@@ -33,7 +33,7 @@ module.exports.loop = function () {
 
     for(var name in Game.spawns) {
         var spawn = Game.spawns[name];
-        roleSpawn.create(spawn);
+        roleSpawn.spawnWorker(spawn);
     }
 
     for(var name in Game.creeps) {
