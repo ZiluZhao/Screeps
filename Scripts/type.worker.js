@@ -11,10 +11,10 @@ var typeWorker = {
         if (harvesters.length<creep.room.memory.requiredHarvesters) {
             creep.memory.role = 'harvester';
         }
-        else if (upgrader.length<creep.room.memory.requiredUpgraders) {
+        else if (upgraders.length<creep.room.memory.requiredUpgraders) {
             creep.memory.role = 'upgrader';
         }
-        else if (builder.length<creep.room.memory.requiredbuilders) {
+        else if (builders.length<creep.room.memory.requiredbuilders) {
             creep.memory.role = 'builder';
         }
 
