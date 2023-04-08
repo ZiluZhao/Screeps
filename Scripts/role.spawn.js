@@ -30,7 +30,7 @@ var roleSpawn= {
         if(workers.length<requiredWorkers) {
             var newName = 'Worker' + Game.time;
             partArray=this.design(spawn, spawn.room.energyCapacityAvailable, workerType);
-            spawn.spawnCreep(partArray, {memory : {bodyType: 'worker', role: 'unemployed', currentJob: 0, home : spawn.room.name}})
+            spawn.spawnCreep(partArray, newName, {memory : {bodyType: 'worker', role: 'unemployed', currentJob: 0, home : spawn.room.name}})
         }
 
     },
