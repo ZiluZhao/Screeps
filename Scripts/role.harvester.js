@@ -22,7 +22,7 @@ var roleHarvester = {
                 }
             });
             if(targets.length > 0) {
-                tar=creep.pos.findClosestByRange(targets);
+                var tar=creep.pos.findClosestByRange(targets);
                 if(creep.transfer(tar, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(tar, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
