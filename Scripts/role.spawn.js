@@ -29,7 +29,7 @@ var roleSpawn= {
         var requiredWorkers=spawn.room.memory.requiredHarvesters+spawn.room.memory.requiredUpgraders+spawn.room.memory.requiredBuilders;
         if(workers.length<requiredWorkers) {
             var newName = 'Worker' + Game.time;
-            partArray=this.design(spawn, spawn.room.energyCapacityAvailable, workerType);
+            var partArray=this.design(spawn, spawn.room.energyCapacityAvailable, workerType);
             spawn.spawnCreep(partArray, newName, {memory : {bodyType: 'worker', role: 'harvester', currentJob: 0, home : spawn.room.name}})
         }
 
