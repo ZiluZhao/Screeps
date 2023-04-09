@@ -6,7 +6,7 @@ var typeWorker = {
     changeJob : function(creep) {
         var harvesters = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'harvester');
         var upgraders = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'upgrader');
-        var builders = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'builders');
+        var builders = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'builder');
 
         if(creep.memory.role == 'harvester') {
             if (harvesters>creep.room.memory.requiredHarvesters) {
@@ -18,7 +18,7 @@ var typeWorker = {
                 creep.memory.role = 'unemployed';
             }
         }
-        else if(creep.memory.role == 'harvester') {
+        else if(creep.memory.role == 'builder') {
             if (builders>creep.room.memory.requiredBuilders) {
                 creep.memory.role = 'unemployed';
             }
