@@ -2,7 +2,7 @@
 
 var roleRoom= {
     run: function(room) {
-        var sites=creep.room.find(FIND_CONSTRUCTION_SITES);
+        var sites=room.find(FIND_CONSTRUCTION_SITES);
         if (sites.length>0) {
             room.memory.requiredHarvesters=3;
             room.memory.requiredUpgraders=3;
