@@ -1,5 +1,6 @@
 var typeWorker = require('type.worker');
 var roleSpawn = require('role.spawn');
+var roleRoom = require('role.room');
 
 
 
@@ -29,6 +30,10 @@ module.exports.loop = function () {
         if(closestHostile) {
             tower.attack(closestHostile);
         }
+    }
+    for(var name in Game.rooms) {
+        var room=Game.rooms[name];
+        roleRoom.run(room);
     }
 
     for(var name in Game.spawns) {
