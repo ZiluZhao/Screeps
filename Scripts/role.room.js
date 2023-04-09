@@ -8,6 +8,11 @@ var roleRoom= {
             room.memory.requiredUpgraders=3;
             room.memory.requiredBuilders=1;
         }
+        else {
+            room.memory.requiredHarvesters=3;
+            room.memory.requiredUpgraders=3;
+            room.memory.requiredBuilders=0;
+        }
     }
 };
 
