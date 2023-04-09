@@ -9,30 +9,30 @@ var typeWorker = {
         var builders = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'builder');
 
         if(creep.memory.role == 'harvester') {
-            if (harvesters>creep.room.memory.requiredHarvesters) {
+            if (harvesters.length>creep.room.memory.requiredHarvesters) {
                 creep.memory.role = 'unemployed';
             }
         }
         else if(creep.memory.role == 'upgrader') {
-            if (upgraders>creep.room.memory.requiredUpgraders) {
+            if (upgraders.length>creep.room.memory.requiredUpgraders) {
                 creep.memory.role = 'unemployed';
             }
         }
         else if(creep.memory.role == 'builder') {
-            if (builders>creep.room.memory.requiredBuilders) {
+            if (builders.length>creep.room.memory.requiredBuilders) {
                 creep.memory.role = 'unemployed';
             }
         }
 
         //No Unemployment
         if(creep.memory.role=='unemployed') {
-            if(harvesters < creep.room.memory.requiredHarvesters) {
+            if(harvesters.length < creep.room.memory.requiredHarvesters) {
                 creep.memory.role = 'harvester';
             }
-            else if(upgraders<1) {
+            else if(upgraders.length<1) {
                 creep.memory.role = 'upgrader';
             }
-            else if(builders < creep.room.memory.requiredBuilders) {
+            else if(builders.length < creep.room.memory.requiredBuilders) {
                 creep.memory.role = 'builder';
             }
             else {
