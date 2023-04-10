@@ -12,7 +12,7 @@ var roleRoom= {
         var totalSourceEnergy=0;
         //var workerCount=0;
         
-        workers=_.filter(room.find(FIND_MY_CREEPS), (creep) => creep.memory.bodyType == 'worker');
+        var workers=_.filter(room.find(FIND_MY_CREEPS), (creep) => creep.memory.bodyType == 'worker');
 
         for(i=0; i<=sources.length-1; i=i+1) {
             if(sources[i].ticksToRegeneration==1) {
