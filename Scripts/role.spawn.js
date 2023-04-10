@@ -26,7 +26,7 @@ var roleSpawn= {
 
     spawnWorker : function(spawn){
         var workers = _.filter(spawn.room.find(FIND_MY_CREEPS), (creep) => creep.memory.bodyType == 'worker');
-        var requiredWorkers=spawn.room.memory.requiredHarvesters+spawn.room.memory.requiredUpgraders+spawn.room.memory.requiredBuilders;
+        var requiredWorkers=spawn.room.memory.requiredWorkers;
         if(workers.length<requiredWorkers) {
             var newName = 'Worker' + Game.time;
             var partArray=this.design(spawn, spawn.room.energyCapacityAvailable, workerType);
