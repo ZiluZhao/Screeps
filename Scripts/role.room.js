@@ -66,7 +66,7 @@ var roleRoom= {
             harvesterNumber=0;
         }
         else {
-            harvesterNumber=Math.floor(workers.length/2);
+            harvesterNumber=Math.ceil(workers.length/2);
         }
         room.memory.requiredHarvesters=harvesterNumber;
 
