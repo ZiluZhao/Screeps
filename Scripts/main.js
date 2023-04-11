@@ -1,6 +1,7 @@
 var typeWorker = require('type.worker');
 var roleSpawn = require('role.spawn');
 var roleRoom = require('role.room');
+const roleAttackTower = require('./role.attackTower');
 
 
 
@@ -17,20 +18,11 @@ module.exports.loop = function () {
 
     
    
-    var tower = Game.getObjectById('642ec9932064b45a41a09bb9');
-    if(tower) {
-/*         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        } */
-
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
+    var towers = _.filter(Game.structures, (structure) => structure.structureType==STRUCTURE_TOWER);
+    for(var i=0; i<=towers.length-1; i=i+1) {
+        roleAttackTower(towers[i]);
     }
+
     for(var name in Game.rooms) {
         var room=Game.rooms[name];
         roleRoom.run(room);
