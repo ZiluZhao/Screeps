@@ -1,7 +1,7 @@
 var typeWorker = require('type.worker');
 var roleSpawn = require('role.spawn');
 var roleRoom = require('role.room');
-const roleAttackTower = require('./role.attackTower');
+var roleAttackTower = require('role.attackTower');
 
 
 
