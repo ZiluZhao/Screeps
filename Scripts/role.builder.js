@@ -14,11 +14,23 @@ var roleBuilder = {
 
         if(creep.memory.building) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            var structures = creep.room.find(FIND_MY_STRUCTURES);
+            var damagedStructures = _.filter(structures, (structure) => (structure.hits<structure.hitsMax && structure.structureType!=STRUCTURE_WALL));
+
+
+            if (damagedStructures.length) {
+                var repairTarget=creep.pos.findClosestByRange(damagedStructures);
+                if(creep.repair(repairTarget) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(repairTarget, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            else if(targets.length) {
+                var constructTarget=creep.pos.findClosestByRange(targets);
+                if(creep.build(constructTarget) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(constructTarget, {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            }
+            
         }
         else {
             var sources = _.filter(creep.room.find(FIND_SOURCES), (source)=>source.energy>0);

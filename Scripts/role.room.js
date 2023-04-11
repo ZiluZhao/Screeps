@@ -60,6 +60,8 @@ var roleRoom= {
         var builderNumber=0;
         var restWorkers=0;
         var sites=room.find(FIND_CONSTRUCTION_SITES);
+        var damagedStructures = _.filter(room.find(FIND_MY_STRUCTURES), (structure) => (structure.hits<structure.hitsMax/2 && structure.structureType!=STRUCTURE_WALL));
+
 
         // set requiredHarvesters 
         if (room.energyAvailable==room.energyCapacityAvailable) {
@@ -75,7 +77,7 @@ var roleRoom= {
         restWorkers=workers.length-harvesterNumber;
 
         //set builder numbers
-        if (sites.length>=1) {
+        if (sites.length>=1 || damagedStructures.length>=1) {
             //what if new claimed room?
             if(restWorkers.length<=1) {
                 console.log("No enough workers(builders) in room ", room.name);
