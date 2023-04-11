@@ -20,7 +20,7 @@ module.exports.loop = function () {
    
     var towers = _.filter(Game.structures, (structure) => structure.structureType==STRUCTURE_TOWER);
     for(var i=0; i<=towers.length-1; i=i+1) {
-        roleAttackTower(towers[i]);
+        roleAttackTower.run(towers[i]);
     }
 
     for(var name in Game.rooms) {
