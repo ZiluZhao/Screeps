@@ -93,6 +93,19 @@ var actionsWorker={
 
 
     },
+
+    clearResevedPositionStoreMiner : function(creepMemory) {
+        if(creepMemory.hasClearedRoomIndex==false) {
+            var roomName=creepMemory.home;
+            var room=Game.rooms[roomName];
+            var indexChoice=creepMemory.workSpotIndex;
+            
+
+
+            room.memory.sourcePositionsIndex[indexChoice]=false;
+            creepMemory.hasClearedRoomIndex=true;
+        }
+    }
 };
 
 module.exports=actionsWorker;

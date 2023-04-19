@@ -1,13 +1,15 @@
 var species=require('species');
+var myConstants=required('myConstants');
 var spawnStoreMining=require('spawn.storeMining')
 
 //room memory
 
 //memory.requiredDropMiner : # of resource depo
 
-//memory.sourcePositions : array of object roomPositions
+//memory.sourcePositionsIndex : bool array true means manned
+//memory.sourceIds : array of object id
 //memory.sourceWorkSpots :  array of object roomPositions
-//memory.sourceLinkPositions : array of object roomPositions
+//memory.sourceStorageIds : array of object id
 
 //memory.mineralPositions : array of object roomPositions
 //memory.mineralWorkSpots : array of object roomPositions
@@ -24,7 +26,7 @@ var spawnStoreMining=require('spawn.storeMining')
 var roomStoreMining = {
     //input rooms object, string
     countRole : function (room, role) {
-        var ticksToLiveThreshold=50;
+        var ticksToLiveThreshold=myConstants.ticksToLiveThreshold;
         var inRoomCreeps=_.filter(room.find(FIND_MY_CREEPS), (creep)=>creep.memory.role==role);
         var workingInRoomCreeps=_.filter(inRoomCreeps, (creep)=>creep.ticksToLive>ticksToLiveThreshold);
         var number=workingInRoomCreeps.length;
@@ -91,8 +93,8 @@ var roomStoreMining = {
         //room.memory.requiredWorkers
 
         var spawns=room.find(FIND_MY_SPAWNS);
-        for (var i=0; i<=spawns.length; i++) {
-            spawnStoreMining.
+        for (var i=0; i<=spawns.length-1; i++) {
+            spawnStoreMining.createCreep(spawn[i]);
         }
 
 

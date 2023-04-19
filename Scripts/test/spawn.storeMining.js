@@ -1,5 +1,5 @@
 var species=require('species');
-const { hauler } = require('./species');
+
 
 
 var spawnStoreMining ={
@@ -79,10 +79,84 @@ var spawnStoreMining ={
         if (!spawn.spawning) {
             spawn.memory.spawningRole=null;
             var spawns=spawn.room.find(FIND_MY_SPAWNS);
-            var spawnsBusy=_.filter(spawns, (spawn)=>spawn.spawning!=null)
-            for(var i=0; i<=spawns.length-1; i++) {
+            var spawnsBusy=_.filter(spawns, (spawn)=>spawn.spawning!=null);
+            var creeps=spawn.room.find(FIND_MY_CREEPS);
 
+
+            var spawnsSpawningStoreMiner=_.filter(spawnsBusy, (spawn)=>spawn.memory.spawningRole=='storeMiner');
+            var spawnsSpawningHauler=_.filter(spawnsBusy, (spawn)=>spawn.memory.spawningRole=='hauler');
+            var spawnsSpawningWorker=_.filter(spawnsBusy, (spawn)=>spawn.memory.spawningRole=='worker');
+
+
+            
+            var storeMiners=_.filter(creeps, (creep)=>creep.memory.role=='storeMiner');
+            var haulers=_.filter(creeps, (creep)=>creep.memory.role=='hauler');
+            var workers=_.filter(creeps, (creep)=>creep.memory.role=='worker');
+
+            var totStoreMiners=storeMiners.length+spawnsSpawningStoreMiner.length;
+            var totHaulers=haulers.length+spawnsSpawningHauler.length;
+            var totWorkers=workers.length+spawnsSpawningWorker.length;
+
+
+            if(totHaulers<spawn.room.memory.requiredHaulers) {
+                var haulerParts=this.designHauler(spawn);
+                var newName = 'Hauler' + Game.time;
+                var result = spawn.createCreep(haulerParts, newName, {
+                    memory : {
+                        role : 'hauler',
+                        assignment : 'energyDistributor',
+                        home : spawn.room.name,
+                    }
+                });
+                if(result==OK) {
+                    spawn.memory.spawningRole='hauler';
+                }
             }
+            else if(totStoreMiners<spawn.room.memory.requiredStoreMiners) {
+                var indexChoice=-1;
+                for (var i=0; i<=spawn.room.memory.sourcePositionsIndex.length; i++) {
+                    if(spawn.room.memory.sourcePositionsIndex[i]==false) {
+                        indexChoice=i;
+                        break;
+                    }
+                }
+                if(indexChoice<0) {
+                    console.log('spawn miner error');
+                    return;
+                }
+                var storeMinerParts=this.designStoreMiner(spawn);
+                var newName='StoreMiner' + Game.time;
+                var result= spawn.createCreep(storeMinerParts, newName, {
+                    memory: {
+                        role : 'storeMiner',
+                        home : spawn.room.name,
+                        workSpotIndex : indexChoice, 
+                        workSpotPosition : spawn.room.memory.sourceWorkSpots[indexChoice],
+                        mineObjectId : spawn.room.memory.sourceIds[indexChoice],
+                        storageId : spawn.room.memory.sourceStorageIds[indexChoice],
+                        hasClearedRoomIndex : false,
+                    }
+                });
+                if(result==OK) {
+                    spawn.memory.spawningRole='storeMiner';
+                    spawn.room.memory.sourcePositionsIndex[indexChoice]=true;
+                }
+            }
+            else if(totWorkers<spawn.room.requiredHaulers) {
+                var workerParts=this.designWorker(spawn);
+                var newName='Worker' + Game.time;
+                var result=spawn.createCreep(workerParts, newName, {
+                    memory: {
+                        role : 'worker',
+                        assignment : 'upgrader',
+                        home : spawn.room.name,
+                    }
+                });
+                if(result==OK) {
+                    spawn.memory.spawningRole='worker';
+                }
+            }
+
         }
     },
 
