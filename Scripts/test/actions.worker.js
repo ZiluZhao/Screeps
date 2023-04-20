@@ -1,7 +1,7 @@
 var auxiliary={
     orStructureType: function(structure, typeArray) {
         var sum=false;
-        for(var i=0; i<=typeArray-1; i++) {
+        for(var i=0; i<=typeArray.length-1; i++) {
             sum=sum||(structure.structureType==typeArray[i]);
             if(sum==true) {
                 return sum;
