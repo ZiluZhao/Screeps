@@ -1,3 +1,4 @@
+const roomInitSim = require("./room.init.sim");
 const roomInitW6N29 = require("./room.init.w6n29");
 
 var roomInit = {
@@ -5,7 +6,7 @@ var roomInit = {
         roomInitW6N29.init(room);
     },
     sim : function(room) {
-        console.log('init sim');
+        roomInitSim.init(room);
     },
 };
 
