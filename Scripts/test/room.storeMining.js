@@ -56,7 +56,7 @@ var roomStoreMining = {
         const maxWorker=6;
         var inFieldWorkerNumber=this.countRole(room, 'worker');
 
-        var storedEnergy=room.storage.store(RESOURCE_ENERGY);
+        var storedEnergy=room.storage.store[RESOURCE_ENERGY];
         if(storedEnergy>energyUpperThreshold) {
             if(inFieldWorkerNumber>=room.memory.requiredWorkers){
                 room.memory.requiredWorkers=inFieldWorkerNumber+1;
