@@ -4,4 +4,4 @@ var myConstants = {
 
 };
 
-module.exports(myConstants)
+module.exports=myConstants;
