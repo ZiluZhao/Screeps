@@ -4,6 +4,7 @@ const roleWorker = require("./role.worker");
 const roomStoreMining = require("./room.storeMining");
 const storeMiner  = require("./role.storeMiner");
 const roomInit = require("./room.init");
+const roleAttackTower = require("./role.attackTower");
 
 module.exports.loop = function () {
     memoryManage.clearCreepMemory();
