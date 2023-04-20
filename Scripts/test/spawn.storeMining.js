@@ -5,7 +5,7 @@ const species=require('./species');
 var spawnStoreMining ={
     isMaxEnergyAchievable :function(spawn) {
         var creeps=spawn.room.find(FIND_MY_CREEPS);
-        var storeMiners=_.filter(creeps, (creep)=>creep.memory.role='storeMiner');
+        var storeMiners=_.filter(creeps, (creep)=>creep.memory.role=='storeMiner');
         var haulers=_.filter(creeps, (creep)=>creep.memory.role=='hauler');
         if(haulers.length<=0) {
             return false;
