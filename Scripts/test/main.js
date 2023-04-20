@@ -2,7 +2,7 @@ const memoryManage = require("./memory.manage");
 const roleHauler = require("./role.hauler");
 const roleWorker = require("./role.worker");
 const roomStoreMining = require("./room.storeMining");
-const storeMiner  = require("./role.storeMiner");
+const roleStoreMiner  = require("./role.storeMiner");
 const roomInit = require("./room.init");
 const roleAttackTower = require("./role.attackTower");
 
@@ -34,7 +34,7 @@ module.exports.loop = function () {
             roleHauler.assign(creep);
         }
         else if(creep.memory.role == 'storeMiner') {
-            storeMiner.run(creep);
+            roleStoreMiner.run(creep);
         }
     }
 }
