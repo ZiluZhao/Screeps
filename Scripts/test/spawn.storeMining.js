@@ -101,7 +101,7 @@ var spawnStoreMining ={
             if(totHaulers<spawn.room.memory.requiredHaulers) {
                 var haulerParts=this.designHauler(spawn);
                 var newName = 'Hauler' + Game.time;
-                var result = spawn.createCreep(haulerParts, newName, {
+                var result = spawn.spawnCreep(haulerParts, newName, {
                     memory: {
                         role : 'hauler',
                         assignment : 'energyDistributor',
@@ -126,7 +126,7 @@ var spawnStoreMining ={
                 }
                 var storeMinerParts=this.designStoreMiner(spawn);
                 var newName='StoreMiner' + Game.time;
-                var result= spawn.createCreep(storeMinerParts, newName, {
+                var result= spawn.spawnCreep(storeMinerParts, newName, {
                     memory:{
                         role : 'storeMiner',
                         home : spawn.room.name,
@@ -145,7 +145,7 @@ var spawnStoreMining ={
             else if(totWorkers<spawn.room.requiredHaulers) {
                 var workerParts=this.designWorker(spawn);
                 var newName='Worker' + Game.time;
-                var result=spawn.createCreep(workerParts, newName, {
+                var result=spawn.spawnCreep(workerParts, newName, {
                     memory:{
                         role : 'worker',
                         assignment : 'upgrader',
