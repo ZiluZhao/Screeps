@@ -142,7 +142,7 @@ var spawnStoreMining ={
                     spawn.room.memory.sourcePositionsIndex[indexChoice]=true;
                 }
             }
-            else if(totWorkers<spawn.room.requiredHaulers) {
+            else if(totWorkers<spawn.room.requiredWorkers) {
                 var workerParts=this.designWorker(spawn);
                 var newName='Worker' + Game.time;
                 var result=spawn.spawnCreep(workerParts, newName, {
