@@ -20,7 +20,7 @@ var actionsWorker={
         var workSpotPosition=creep.memory.workSpotPosition;
         var position= new RoomPosition(workSpotPosition.x, workSpotPosition.y, workSpotPosition.roomName);
         if(creep.ticksToLive==1) {
-            if(creep.pos!=position) {
+            if(!position.isEqualTo(creep.pos)) {
                 console.log("cannot reach work spot");
             }
         }
