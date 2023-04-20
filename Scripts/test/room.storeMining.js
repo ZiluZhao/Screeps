@@ -100,12 +100,10 @@ var roomStoreMining = {
         if (workerNumber<=0) {
             room.memory.requiredUpgraders=0;
             room.memory.requiredBuilders=0;
-            return;
         }
         else if(workerNumber==1) {
             room.memory.requiredUpgraders=1;
             room.memory.requiredBuilders=0;
-            return
         }
         else{
             var constructionSites=room.find(FIND_MY_CONSTRUCTION_SITES);
