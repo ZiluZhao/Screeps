@@ -140,19 +140,32 @@ var roomStoreMining = {
         //calculate hauler required assignment number
         //room.memory.requiredAssignedEnergyDistributors=1;
         //room.memory.requiredAssignedEnergyCollectors=1;
+
         var haulerCount=this.countRole(room, 'hauler');
-        if(haulerCount<=0) {
-            room.memory.requiredAssignedEnergyDistributors=0;
-            room.memory.requiredAssignedEnergyCollectors=0;
+        var droppedResources=room.find(FIND_DROPPED_RESOURCES);
+        var structures=room.find(FIND_STRUCTURES);
+        var containers=_.filter(structures, (structure)=>structure.structureType==STRUCTURE_CONTAINER);
+        var almostFullConstainers=_.filter(containers, (container)=>container.store.getFreeCapacity()<myConstants.containerFreeSpaceThreshold);
+
+        if(droppedResources.length+almostFullConstainers>=1){
+            if(haulerCount<=0) {
+                room.memory.requiredAssignedEnergyDistributors=0;
+                room.memory.requiredAssignedEnergyCollectors=0;
+            }
+            else if(haulerCount==1) {
+                room.memory.requiredAssignedEnergyDistributors=1;
+                room.memory.requiredAssignedEnergyCollectors=0;
+            }
+            else if(haulerCount>=2) {
+                room.memory.requiredAssignedEnergyCollectors=Math.floor(haulerCount/2);
+                room.memory.requiredAssignedEnergyDistributors=haulerCount-room.memory.requiredAssignedEnergyCollectors;
+            } 
         }
-        else if(haulerCount==1) {
-            room.memory.requiredAssignedEnergyDistributors=1;
+        else {
             room.memory.requiredAssignedEnergyCollectors=0;
+            room.memory.requiredAssignedEnergyDistributors=haulerCount;
         }
-        else if(haulerCount>=2) {
-            room.memory.requiredAssignedEnergyCollectors=Math.floor(haulerCount/2);
-            room.memory.requiredAssignedEnergyDistributors=haulerCount-room.memory.requiredAssignedEnergyCollectors;
-        } 
+
 
 
 
