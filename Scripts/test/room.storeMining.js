@@ -90,7 +90,7 @@ var roomStoreMining = {
 
         var spawns=room.find(FIND_MY_SPAWNS);
         for (var i=0; i<=spawns.length-1; i++) {
-            spawnStoreMining.createCreep(spawn[i]);
+            spawnStoreMining.createCreep(spawns[i]);
         }
 
 
