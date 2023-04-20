@@ -1,17 +1,17 @@
-var roomInitW6N29={
+var roomInitSim={
     init : function(room) {
         room.memory.miningType='storeMining';
 
-        const sourceId1='5bbcac899099fc012e635a5c';
-        const sourcePosition1=new RoomPosition(14, 18, 'W6N29');
+        const sourceId1='86d0a9ac364be25a1aab5795';
+        const sourcePosition1=new RoomPosition(34, 20, 'sim');
         const storeId1=room.storage.id;
 
-        const sourceId2='5bbcac899099fc012e635a5d';
-        const sourcePosition2=new RoomPosition(13, 19, 'W6N29');
+        const sourceId2='86d0a9ac364be25a1aab5795';
+        const sourcePosition2=new RoomPosition(35, 21, 'sim');
         const storeId2=room.storage.id;
 
         const mineralId='5bbcb29d40062e4259e93bd9';
-        const mineralPosition=new RoomPosition(5, 3, 'W6N29');
+        const mineralPosition=new RoomPosition(5, 3, 'sim');
 
 
         //source worker
@@ -29,4 +29,4 @@ var roomInitW6N29={
     },
 };
 
-module.exports=roomInitW6N29;
+module.exports=roomInitSim;

@@ -4,16 +4,15 @@ const spawnStoreMining=require('./spawn.storeMining')
 
 //room memory
 
-//memory.requiredDropMiner : # of resource depo
 
 //memory.sourcePositionsIndex : bool array true means manned
 //memory.sourceIds : array of object id
 //memory.sourceWorkSpots :  array of object roomPositions
 //memory.sourceStorageIds : array of object id
 
-//memory.mineralPositions : array of object roomPositions
+//memory.mineralIds : array of object roomPositions
 //memory.mineralWorkSpots : array of object roomPositions
-//memory.mineralLinkPositions : array of object roomPositions
+
 
 
 //spawn.memory.currentSpawningRole :string
