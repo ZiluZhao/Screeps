@@ -1,4 +1,4 @@
-var actionsWorker=require('actions.worker');
+const actionsWorker=require('./actions.worker');
 
 var roleDropMiner= {
     moveToWorkSpot : function(creep) {

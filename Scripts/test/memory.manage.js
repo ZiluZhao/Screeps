@@ -1,4 +1,4 @@
-const actionsWorker = require("actions.worker");
+const actionsWorker = require("./actions.worker");
 
 
 

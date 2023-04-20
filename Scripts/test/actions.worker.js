@@ -56,7 +56,7 @@ var actionsWorker={
 
 
     collectEnergyFromStorage: function(creep) {
-        if(creep.withdraw(creep.room.storage) == ERR_NOT_IN_RANGE) {
+        if(creep.withdraw(creep.room.storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creep.moveTo(creep.room.storage);
         }
     },

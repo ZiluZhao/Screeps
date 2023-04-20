@@ -1,9 +1,9 @@
 var roomInit = {
-    init : function(room) {
-        if(!room.memory.isInitialized) {
-            
-        }
-        room.find(FIND_SOURCES)
+    W6N29 : function(room) {
+        console.log(' ');
+    },
+    sim : function(room) {
+        console.log('init sim');
     },
 };
 

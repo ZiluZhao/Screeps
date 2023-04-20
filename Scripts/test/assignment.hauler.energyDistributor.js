@@ -1,7 +1,7 @@
 
 
 //creep.memory.distibuting, boolean
-actionsWorker=require('actions.worker');
+const actionsWorker=require('./actions.worker');
 
 var assignmentHaulerEnergyDistributor={
     run : function(creep) {

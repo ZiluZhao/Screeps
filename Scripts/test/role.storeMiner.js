@@ -3,8 +3,8 @@
 //memory.mineObjectId (type: ID , energySource)
 //memory.storageId (type: ID, storage/link)
 
-var actionsWorker=require('./actions.worker');
-var myConstants=require('myConstants');
+const actionsWorker=require('./actions.worker');
+const myConstants=require('myConstants');
 
 var roleStoreMiner = {
 

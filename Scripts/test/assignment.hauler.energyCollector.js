@@ -27,6 +27,8 @@ var assignmentHaulerEnergyCollector = {
             creep.say('⚡ storing');
         }
 
+        
+
         //collect energy
         if(!creep.memory.storing) {
             if(droppedResources.length>0) {
@@ -38,6 +40,10 @@ var assignmentHaulerEnergyCollector = {
                 }
             }
             else if (energyContainers.length>0) {
+                //initializeMemory
+                if(!creep.memory.energyContainerId) {
+                    creep.memory.energyContainerId=energyContainers[0].id;
+                }
                 var inMemoryId=creep.memory.energyContainerId;
                 var inMemoryEnergyContainer=Game.getObjectById(inMemoryId);
                 if(inMemoryEnergyContainer.store[RESOURCE_ENERGY]<1500) {

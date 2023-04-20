@@ -1,4 +1,4 @@
-var species=require('species');
+const species=require('./species');
 
 
 
