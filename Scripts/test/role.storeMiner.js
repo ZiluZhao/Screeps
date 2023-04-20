@@ -33,7 +33,8 @@ var roleStoreMiner = {
     },
 
     run : function(creep) {
-        if(creep.pos==creep.memory.workSpotPosition) {
+        var workSpotPosition=new RoomPosition(creep.memory.workSpotPosition.x, creep.memory.workSpotPosition.y, creep.memory.workSpotPosition.roomName);
+        if(creep.pos==workSpotPosition) {
             this.mineAndStore(creep);
         }
         else {
