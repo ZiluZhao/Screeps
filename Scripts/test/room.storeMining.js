@@ -1,5 +1,5 @@
 const species=require('./species');
-const myConstants=required('./myConstants');
+const myConstants=require('./myConstants');
 const spawnStoreMining=require('./spawn.storeMining')
 
 //room memory

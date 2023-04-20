@@ -4,7 +4,7 @@
 //memory.storageId (type: ID, storage/link)
 
 const actionsWorker=require('./actions.worker');
-const myConstants=require('myConstants');
+const myConstants=require('./myConstants');
 
 var roleStoreMiner = {
 
