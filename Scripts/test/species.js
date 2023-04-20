@@ -12,8 +12,8 @@ const species={
         carryParts : [CARRY, CARRY],
         basicCost : 250,
         carryCost : 100,
-        perfectParts : [WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
-        perfectCost : 850,
+        perfectParts : [WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
+        perfectCost : 900,
     },
 
     transferer : {
