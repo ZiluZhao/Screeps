@@ -166,16 +166,7 @@ var roomStoreMining = {
             room.memory.requiredAssignedEnergyDistributors=haulerCount;
         }
 
-
-
-
-
-
     },
-    
-    
-    
-
 };
 
 

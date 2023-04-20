@@ -18,12 +18,13 @@ var actionsWorker={
     //  creep.workSpotPosition
     moveToWorkSpot : function(creep) {
         var workSpotPosition=creep.memory.workSpotPosition;
+        var position= new RoomPosition(workSpotPosition.x, workSpotPosition.y, workSpotPosition.roomName);
         if(creep.ticksToLive==1) {
-            if(creep.pos!=workSpotPosition) {
+            if(creep.pos!=position) {
                 console.log("cannot reach work spot");
             }
         }
-        creep.moveTo(workSpotPosition);
+        creep.moveTo(position);
     },
 
 
