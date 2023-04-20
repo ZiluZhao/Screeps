@@ -132,7 +132,7 @@ var roomStoreMining = {
                 availableWorkerCount=0;
             }
             
-            upgraderNumber=availableWorkerCount+1;
+            var upgraderNumber=availableWorkerCount+1;
             room.memory.requiredUpgraders=upgraderNumber;
         }
 
