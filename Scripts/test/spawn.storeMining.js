@@ -102,11 +102,9 @@ var spawnStoreMining ={
                 var haulerParts=this.designHauler(spawn);
                 var newName = 'Hauler' + Game.time;
                 var result = spawn.createCreep(haulerParts, newName, {
-                    memory : {
                         role : 'hauler',
                         assignment : 'energyDistributor',
                         home : spawn.room.name,
-                    }
                 });
                 if(result==OK) {
                     spawn.memory.spawningRole='hauler';
@@ -127,7 +125,6 @@ var spawnStoreMining ={
                 var storeMinerParts=this.designStoreMiner(spawn);
                 var newName='StoreMiner' + Game.time;
                 var result= spawn.createCreep(storeMinerParts, newName, {
-                    memory: {
                         role : 'storeMiner',
                         home : spawn.room.name,
                         workSpotIndex : indexChoice, 
@@ -135,7 +132,6 @@ var spawnStoreMining ={
                         mineObjectId : spawn.room.memory.sourceIds[indexChoice],
                         storageId : spawn.room.memory.sourceStorageIds[indexChoice],
                         hasClearedRoomIndex : false,
-                    }
                 });
                 if(result==OK) {
                     spawn.memory.spawningRole='storeMiner';
@@ -146,11 +142,9 @@ var spawnStoreMining ={
                 var workerParts=this.designWorker(spawn);
                 var newName='Worker' + Game.time;
                 var result=spawn.createCreep(workerParts, newName, {
-                    memory: {
                         role : 'worker',
                         assignment : 'upgrader',
                         home : spawn.room.name,
-                    }
                 });
                 if(result==OK) {
                     spawn.memory.spawningRole='worker';
