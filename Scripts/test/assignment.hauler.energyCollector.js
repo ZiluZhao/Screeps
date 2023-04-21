@@ -46,7 +46,7 @@ var assignmentHaulerEnergyCollector = {
                 }
                 var inMemoryId=creep.memory.energyContainerId;
                 var inMemoryEnergyContainer=Game.getObjectById(inMemoryId);
-                if(inMemoryEnergyContainer.store[RESOURCE_ENERGY]<1500) {
+                if(inMemoryEnergyContainer.store[RESOURCE_ENERGY]<1000) {
                     //find container contains the most resources
                     var maxIndex=0;
                     var maxValue=0;
@@ -58,7 +58,7 @@ var assignmentHaulerEnergyCollector = {
                             maxValue=energyInside;
                         }
                     }
-                    if(maxValue>=1500) {
+                    if(maxValue>=1000) {
                         inMemoryEnergyContainer = energyContainers[maxIndex];
                         inMemoryId=inMemoryEnergyContainer.id;
                         creep.memory.energyContainerId=inMemoryId;
