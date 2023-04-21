@@ -31,7 +31,12 @@ var spawnStoreMining ={
             }
         }
         else {
-            var energyAvailable=spawn.room.energyAvailable;
+            if(spawn.room.energyAvailable>speciesRole.perfectCost){
+                var energyAvailable=speciesRole.perfectCost;
+            }
+            else{
+                var energyAvailable=spawn.room.energyAvailable;
+            }
         }
         return energyAvailable;
     },
