@@ -7,7 +7,7 @@ const myConstants = require("./myConstants");
 var assignmentHaulerEnergyCollector = {
 
     storeResource :function(creep) {
-        var target=room.storage;
+        var target=creep.room.storage;
             var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
             var resource=carriedResources[0];
             if (!target) {
