@@ -1,3 +1,4 @@
+const myConstants = require('./myConstants');
 const species=require('./species');
 
 
@@ -94,9 +95,9 @@ var spawnStoreMining ={
 
 
             
-            var storeMiners=_.filter(creeps, (creep)=>creep.memory.role=='storeMiner');
-            var haulers=_.filter(creeps, (creep)=>creep.memory.role=='hauler');
-            var workers=_.filter(creeps, (creep)=>creep.memory.role=='worker');
+            var storeMiners=_.filter(creeps, (creep)=>creep.memory.role=='storeMiner'&&creep.ticksToLive>myConstants.ticksToLiveThreshold);
+            var haulers=_.filter(creeps, (creep)=>creep.memory.role=='hauler'&&creep.ticksToLive>myConstants.ticksToLiveThreshold);
+            var workers=_.filter(creeps, (creep)=>creep.memory.role=='worker'&&creep.ticksToLive>myConstants.ticksToLiveThreshold);
 
             var totStoreMiners=storeMiners.length+spawnsSpawningStoreMiner.length;
             var totHaulers=haulers.length+spawnsSpawningHauler.length;
