@@ -18,9 +18,10 @@ var assignmentHaulerEnergyCollector = {
         var energyContainers=_.filter(nonEmptyContainers, (container)=>container.store[RESOURCE_ENERGY]>0);
         //var linkArray=_.filter(room.lookForAt(LOOK_STRUCTURES, room.memory.storageLinkPosition), (structure)=>structureType==STRUCTURE_LINK);
 
+        var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
         
 
-        if(creep.memory.storing && creep.store[RESOURCE_ENERGY] == 0) {
+        if(creep.memory.storing && carriedResources.length <= 0) {
             creep.memory.storing = false;
             creep.say('🔄 collecting');
         }
@@ -77,11 +78,13 @@ var assignmentHaulerEnergyCollector = {
         // store energy
         else {
             var target=room.storage;
+            var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
+            var resource=carriedResources[0];
             if (!target) {
                 console.log('no storage');
                 return;
             }
-            if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            if(creep.transfer(target, resource) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(target);
             }
         }
