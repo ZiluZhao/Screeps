@@ -145,9 +145,9 @@ var roomStoreMining = {
         var droppedResources=room.find(FIND_DROPPED_RESOURCES);
         var structures=room.find(FIND_STRUCTURES);
         var containers=_.filter(structures, (structure)=>structure.structureType==STRUCTURE_CONTAINER);
-        var almostFullConstainers=_.filter(containers, (container)=>container.store.getFreeCapacity()<myConstants.containerFreeSpaceThreshold);
+        var almostFullConstainers=_.filter(containers, (container)=>container.store.getFreeCapacity(RESOURCE_ENERGY)<myConstants.containerFreeSpaceThreshold);
 
-        if(droppedResources.length+almostFullConstainers>=1){
+        if(droppedResources.length+almostFullConstainers.length>=1){
             if(haulerCount<=0) {
                 room.memory.requiredAssignedEnergyDistributors=0;
                 room.memory.requiredAssignedEnergyCollectors=0;
