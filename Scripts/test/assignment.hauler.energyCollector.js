@@ -2,6 +2,8 @@
 //memory.energyContainerId
 //memory.storing
 
+const myConstants = require("./myConstants");
+
 var assignmentHaulerEnergyCollector = {
     //collect form * to (storage)
     //pick up,
@@ -46,7 +48,8 @@ var assignmentHaulerEnergyCollector = {
                 }
                 var inMemoryId=creep.memory.energyContainerId;
                 var inMemoryEnergyContainer=Game.getObjectById(inMemoryId);
-                if(inMemoryEnergyContainer.store[RESOURCE_ENERGY]<1000) {
+                var inContainerEnergyThreshold=2000-myConstants.containerFreeSpaceThreshold;
+                if(inMemoryEnergyContainer.store[RESOURCE_ENERGY]<inContainerEnergyThreshold) {
                     //find container contains the most resources
                     var maxIndex=0;
                     var maxValue=0;
@@ -58,7 +61,7 @@ var assignmentHaulerEnergyCollector = {
                             maxValue=energyInside;
                         }
                     }
-                    if(maxValue>=1000) {
+                    if(maxValue>=inContainerEnergyThreshold) {
                         inMemoryEnergyContainer = energyContainers[maxIndex];
                         inMemoryId=inMemoryEnergyContainer.id;
                         creep.memory.energyContainerId=inMemoryId;
