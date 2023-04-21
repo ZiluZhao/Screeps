@@ -123,7 +123,7 @@ var roomStoreMining = {
             if(availableWorkerCount>=2) {
                 if(damagedWallCount>0) {
                     room.memory.requiredWallers=1;
-                    availableWorkerCount=availableWorkerCount-room.requiredWallers;
+                    availableWorkerCount=availableWorkerCount-room.memory.requiredWallers;
                 }
             }
             room.memory.requiredBuilders=0;
