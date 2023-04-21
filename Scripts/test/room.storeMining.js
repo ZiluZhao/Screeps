@@ -53,7 +53,7 @@ var roomStoreMining = {
         const energyUpperThreshold=40000;
         const energyLowerThreshold=20000;
         const minWorker=1;
-        const maxWorker=6;
+        const maxWorker=4;
         var inFieldWorkerNumber=this.countRole(room, 'worker');
 
         var storedEnergy=room.storage.store[RESOURCE_ENERGY];
