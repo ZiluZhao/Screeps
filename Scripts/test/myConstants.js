@@ -1,5 +1,5 @@
 var myConstants = {
-    ticksToLiveThreshold : 50,
+    ticksToLiveThreshold : 35,
     containerFreeSpaceThreshold : 1500,
 
 };
