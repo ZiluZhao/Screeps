@@ -9,8 +9,11 @@ var roleHauler ={
         var energyDistributor = _.filter(creep.room.find(FIND_MY_CREEPS), (creep) => creep.memory.assignment == 'energyDistributor');
         
         if(creep.memory.assignment == 'energyCollector') {
+            var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
             if (energyCollector.length>creep.room.memory.requiredAssignedEnergyCollectors) {
-                creep.memory.assignment = 'unemployed';
+                if(carriedResources.length==0){
+                    creep.memory.assignment = 'unemployed';
+                }
             }
         }
         else if(creep.memory.assignment == 'energyDistributor') {

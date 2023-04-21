@@ -5,6 +5,20 @@
 const myConstants = require("./myConstants");
 
 var assignmentHaulerEnergyCollector = {
+
+    storeResource :function(creep) {
+        var target=room.storage;
+            var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
+            var resource=carriedResources[0];
+            if (!target) {
+                console.log('no storage');
+                return;
+            }
+            if(creep.transfer(target, resource) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(target);
+            }
+    },
+
     //collect form * to (storage)
     //pick up,
     //container,
@@ -71,22 +85,14 @@ var assignmentHaulerEnergyCollector = {
                 if(creep.withdraw(inMemoryEnergyContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(inMemoryEnergyContainer);
                 }
-                
-
+            }
+            else {
+                creep.memory.storing = true;
             }
         }
         // store energy
         else {
-            var target=room.storage;
-            var carriedResources=_.filter(Object.keys(creep.store), (resource)=>creep.store[resource]>0);
-            var resource=carriedResources[0];
-            if (!target) {
-                console.log('no storage');
-                return;
-            }
-            if(creep.transfer(target, resource) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target);
-            }
+            this.storeResource(creep);
         }
 
 
