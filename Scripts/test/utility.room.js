@@ -1,3 +1,5 @@
+const myConstants = require("./myConstants");
+
 var utilityRoom = {
     //input rooms object, string
     countRole : function (room, role) {
