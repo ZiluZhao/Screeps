@@ -35,8 +35,8 @@ var spawnAttack={
             }
             else if(flag.memory.sapperAmount<flag.memory.requiredSappers) {
                 var newName='Sapper' + Game.time;
-                var result=spawn.spawnCreep([WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE,
-                    WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE], newName, {
+                var result=spawn.spawnCreep([WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE,
+                    WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE, WORK, MOVE], newName, {
                     memory: {
                         role: 'sapper',
                         home:spawn.room.name,
