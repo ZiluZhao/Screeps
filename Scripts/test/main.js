@@ -8,6 +8,7 @@ const roleAttackTower = require("./role.attackTower");
 const flagAttack = require("./flag.attack");
 const roleAttacker = require("./role.attacker");
 const roleClaimer = require("./role.claimer");
+const roleSapper = require("./role.sapper");
 
 module.exports.loop = function () {
     memoryManage.clearCreepMemory();
@@ -48,6 +49,9 @@ module.exports.loop = function () {
         }
         else if(creep.memory.role == 'claimer') {
             roleClaimer.run(creep);
+        }
+        else if(creep.memory.role=='sapper'){
+            roleSapper.run(creep);
         }
     }
 
