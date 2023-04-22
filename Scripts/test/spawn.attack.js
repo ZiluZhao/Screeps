@@ -7,6 +7,7 @@ var spawnAttack={
                 var result=spawn.spawnCreep([TOUGH, MOVE, TOUGH, MOVE, TOUGH, MOVE, TOUGH, MOVE, TOUGH, MOVE,
                 ATTACK, MOVE, ATTACK, MOVE, ATTACK, MOVE, ATTACK, MOVE, ATTACK, MOVE], newName, {
                     memory: {
+                        role : 'attacker',
                         home : spawn.room.name,
                         flagName : flag.name,
                         targetRoomName : flag.memory.target,
@@ -21,6 +22,7 @@ var spawnAttack={
                 var newName='Claimer' + Game.time;
                 var result=spawn.spawnCreep([CLAIM, MOVE], newName, {
                     memory: {
+                        role : 'claimer',
                         home : spawn.room.name,
                         flagName : flag.name,
                         targetRoomName : flag.memory.target,
