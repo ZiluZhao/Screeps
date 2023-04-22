@@ -11,7 +11,7 @@ var roleSapper={
         var flag=Game.flags[flagName];
 
         if(creep.room.name!=targetRoomName) {
-            this.moveToTargetRoom(creep, targetRoomName)
+            creep.moveTo(flag);
         }
         else {
             var wall=Game.getObjectById(creep.memory.destroyTargetId);
