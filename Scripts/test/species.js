@@ -1,4 +1,20 @@
 const species={
+    attacker: {
+        toughParts : [TOUGH, MOVE],
+        toughCost : 60,
+        attackParts : [ATTACK, MOVE],
+        attackCost : 130,
+
+        perfectCost : 950,
+    },
+
+    claimer:{
+        perfectParts : [CLAIM, MOVE],
+        perfectCost : 650,
+
+    },
+
+
     dropMiner : {
         basicParts : [WORK, WORK, MOVE],
         basicCost : 250,

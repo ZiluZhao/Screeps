@@ -1,30 +1,4 @@
-const species=require('./species');
-const myConstants=require('./myConstants');
-const spawnStoreMining=require('./spawn.storeMining');
-const utilityRoom = require('./utility.room');
-
-//room memory
-
-
-//memory.sourcePositionsIndex : bool array true means manned
-//memory.sourceIds : array of object id
-//memory.sourceWorkSpots :  array of object roomPositions
-//memory.sourceStorageIds : array of object id
-
-//memory.mineralIds : array of object roomPositions
-//memory.mineralWorkSpots : array of object roomPositions
-
-
-
-//spawn.memory.currentSpawningRole :string
-
-
-//creep.memory.role
-//creep.memory.roleClass
-
-
-var roomStoreMining = {
-
+var roomDropMining= {
     getRequiredWorkers : function(room) {
         if(!room.memory.requiredWorkers) {
             room.memory.requiredWorkers=1;
@@ -60,8 +34,8 @@ var roomStoreMining = {
 
     
     //storage is adjacent to both miners
-    storeMining : function (room) {
-        room.memory.requiredStoreMiners=2;
+    dropMining : function (room) {
+        room.memory.requiredDropMiners=2;
         room.memory.requiredHaulers=2;
         this.getRequiredWorkers(room);
         //room.memory.requiredBuilders
@@ -69,7 +43,7 @@ var roomStoreMining = {
 
         var spawns=room.find(FIND_MY_SPAWNS);
         for (var i=0; i<=spawns.length-1; i++) {
-            spawnStoreMining.createCreep(spawns[i]);
+            spawnDropMining.createCreep(spawns[i]);
         }
 
 
@@ -126,7 +100,10 @@ var roomStoreMining = {
         var containers=_.filter(structures, (structure)=>structure.structureType==STRUCTURE_CONTAINER);
         var almostFullConstainers=_.filter(containers, (container)=>container.store.getFreeCapacity(RESOURCE_ENERGY)<myConstants.containerFreeSpaceThreshold);
 
-        if(droppedResources.length+almostFullConstainers.length>=1){
+        if(!room.storage){
+            room.memory.requiredAssignedCollectorFiller=haulerCount;
+        }
+        else if(droppedResources.length+almostFullConstainers.length>=1){
             if(haulerCount<=0) {
                 room.memory.requiredAssignedEnergyDistributors=0;
                 room.memory.requiredAssignedEnergyCollectors=0;
@@ -144,11 +121,8 @@ var roomStoreMining = {
             room.memory.requiredAssignedEnergyCollectors=0;
             room.memory.requiredAssignedEnergyDistributors=haulerCount;
         }
-        room.memory.requiredAssignedCollectFillers=0;
-
 
     },
 };
 
-
-module.exports = roomStoreMining;
+module.exports=roomDropMining;

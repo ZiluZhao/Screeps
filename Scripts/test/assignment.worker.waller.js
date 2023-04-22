@@ -13,7 +13,7 @@ var assignmentWorkerWaller = {
         if(creep.memory.walling) {
             //var targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
             var structures = creep.room.find(FIND_STRUCTURES);
-            var damagedWalls = _.filter(structures, (structure) => (structure.hits<structure.hitsMax && structure.structureType==STRUCTURE_WALL));
+            var damagedWalls = _.filter(structures, (structure) => (structure.hits<structure.hitsMax/100 && structure.structureType==STRUCTURE_WALL));
 
 
             if (damagedWalls.length) {

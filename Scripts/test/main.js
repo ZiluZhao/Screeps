@@ -8,6 +8,7 @@ const roleAttackTower = require("./role.attackTower");
 
 module.exports.loop = function () {
     memoryManage.clearCreepMemory();
+    memoryManage.clearFlagMemory();
 
     var towers = _.filter(Game.structures, (structure) => structure.structureType==STRUCTURE_TOWER);
     for(var i=0; i<=towers.length-1; i=i+1) {
@@ -21,6 +22,9 @@ module.exports.loop = function () {
         }
         if(room.memory.miningType=='storeMining') {
             roomStoreMining.storeMining(room);
+        }
+        else if(room.memory.miningType=='dropMining') {
+            
         }
     }
 
@@ -37,4 +41,5 @@ module.exports.loop = function () {
             roleStoreMiner.run(creep);
         }
     }
+    
 }

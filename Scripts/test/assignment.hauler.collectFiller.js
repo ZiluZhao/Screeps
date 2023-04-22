@@ -4,7 +4,7 @@
 
 const myConstants = require("./myConstants");
 
-var assignmentHaulerEnergyCollector = {
+var assignmentHaulerCollectFiller = {
 
     storeResource :function(creep) {
         var target=creep.room.storage;
@@ -93,11 +93,11 @@ var assignmentHaulerEnergyCollector = {
         }
         // store energy
         else {
-            this.storeResource(creep);
+            actionsWorker.distributeEnergy(creep);
         }
 
 
     },
 };
 
-module.exports = assignmentHaulerEnergyCollector;
+module.exports = assignmentHaulerCollectFiller;
