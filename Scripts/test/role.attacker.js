@@ -61,28 +61,33 @@ var roleAttacker = {
         var flagName=creep.memory.flagName;
         var flag=Game.flags[flagName];
 
+        rangedTarget=this.findClosestEnemyWith(creep, RANGED_ATTACK);
+        attackerTarget=this.findClosestEnemyWith(creep, ATTACK);
+        healerTarget=this.findClosestEnemyWith(creep, HEAL);
+        spawnTarget=this.findClosestStructureType(creep, STRUCTURE_SPAWN);
+
         if(creep.room.name!=targetRoomName) {
             this.moveToTargetRoom(creep, targetRoomName)
         }
         else {
-            if(rangedTarget=this.findClosestEnemyWith(creep, RANGED_ATTACK)){
+            if(rangedTarget){
                 if(creep.attack(rangedTarget)==ERR_NOT_IN_RANGE) {
                     creep.moveTo(rangedTarget);
                 }
 
 
             }
-            else if(healerTarget=this.findClosestEnemyWith(creep, HEAL)) {
+            else if(healerTarget) {
                 if(creep.attack(healerTarget)==ERR_NOT_IN_RANGE) {
                     creep.moveTo(healerTarget);
                 }
             }
-            else if(attackerTarget=this.findClosestEnemyWith(creep, ATTACK)) {
+            else if(attackerTarget) {
                 if(creep.attack(attackerTarget)==ERR_NOT_IN_RANGE) {
                     creep.moveTo(attackerTarget);
                 }
             }
-            else if(spawnTarget=this.findClosestStructureType(creep, STRUCTURE_SPAWN)){
+            else if(spawnTarget){
                 if(creep.attack(spawnTarget)==ERR_NOT_IN_RANGE) {
                     creep.moveTo(spawnTarget);
                 }
