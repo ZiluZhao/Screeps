@@ -5,6 +5,9 @@ const roomStoreMining = require("./room.storeMining");
 const roleStoreMiner  = require("./role.storeMiner");
 const roomInit = require("./room.init");
 const roleAttackTower = require("./role.attackTower");
+const flagAttack = require("./flag.attack");
+const roleAttacker = require("./role.attacker");
+const roleClaimer = require("./role.claimer");
 
 module.exports.loop = function () {
     memoryManage.clearCreepMemory();
@@ -39,6 +42,20 @@ module.exports.loop = function () {
         }
         else if(creep.memory.role == 'storeMiner') {
             roleStoreMiner.run(creep);
+        }
+        else if(creep.memory.role == 'attacker') {
+            roleAttacker.attackRoom(creep);
+        }
+        else if(creep.memory.role == 'claimer') {
+            roleClaimer.run(creep);
+        }
+    }
+
+    for(var name in Game.flags) {
+        var flag = Game.flags[name];
+
+        if(flag.memory.flagType == 'attack') {
+            flagAttack.run(flag);
         }
     }
     
