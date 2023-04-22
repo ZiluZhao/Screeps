@@ -21,9 +21,9 @@ module.exports.loop = function () {
 
     for(var name in Game.rooms) {
         var room=Game.rooms[name];
-        if(room.controller.my && !room.memory.isInitialized){
-            roomInit[name](room);
-        }
+        //if(room.controller.my && !room.memory.isInitialized){
+        //    roomInit[name](room);
+        //}
         if(room.memory.miningType=='storeMining') {
             roomStoreMining.storeMining(room);
         }
