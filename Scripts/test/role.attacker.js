@@ -67,7 +67,7 @@ var roleAttacker = {
         spawnTarget=this.findClosestStructureType(creep, STRUCTURE_SPAWN);
 
         if(creep.room.name!=targetRoomName) {
-            this.moveTo(flag);
+            creep.moveTo(flag);
         }
         else {
             if(rangedTarget){
