@@ -40,7 +40,7 @@ var roleClaimer={
                 flag.memory.requiredClaimers = 0;
             }
             else if(this.hasThreat(creep)){
-                flag.memory.requiredAttackers=2;
+                flag.memory.requiredAttackers=1;
                 flag.memory.requiredClaimers = 0;
             }
         }
