@@ -22,7 +22,7 @@ var roleClaimer={
         var flag=Game.flags[flagName];
 
         if(creep.room.name!=targetRoomName) {
-            this.moveToTargetRoomName(creep, targetRoomName)
+            this.moveToTargetRoom(creep, targetRoomName)
         }
         else {
             if(creep.room.controller && !creep.room.controller.my && creep.room.controller.level>0) {

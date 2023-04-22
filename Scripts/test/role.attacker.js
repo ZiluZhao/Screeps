@@ -62,7 +62,7 @@ var roleAttacker = {
         var flag=Game.flags[flagName];
 
         if(creep.room.name!=targetRoomName) {
-            this.moveToTargetRoomName(creep, targetRoomName)
+            this.moveToTargetRoom(creep, targetRoomName)
         }
         else {
             if(rangedTarget=this.findClosestEnemyWith(creep, RANGED_ATTACK)){
