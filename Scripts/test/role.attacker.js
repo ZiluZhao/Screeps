@@ -89,13 +89,13 @@ var roleAttacker = {
             }
             if(this.hasThreat(creep)){
                 
-                flag.memory.requiredAttacker=2;
-                flag.memory.requiredClaimer = 0;
+                flag.memory.requiredAttackers=2;
+                flag.memory.requiredClaimers = 0;
 
             }
             else{
-                flag.memory.requiredAttacker=0;
-                flag.memory.requiredClaimer = 2;
+                flag.memory.requiredAttackers=0;
+                flag.memory.requiredClaimers = 2;
             }
         }
 

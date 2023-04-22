@@ -4,9 +4,9 @@ var flagAttack={
 
     //set required creeps
     run : function (flag){
-        if(flag.memory.requiredAttacker==undefined) {
-            flag.memory.requiredAttacker=2;
-            flag.memory.requiredClaimer=1;
+        if(flag.memory.requiredAttackers==undefined) {
+            flag.memory.requiredAttackers=2;
+            flag.memory.requiredClaimers=1;
         }
         
 

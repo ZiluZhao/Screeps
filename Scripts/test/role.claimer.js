@@ -36,12 +36,12 @@ var roleClaimer={
                 }
             }
             if(creep.room.controller.my) {
-                flag.memory.requiredAttacker=0;
-                flag.memory.requiredClaimer = 0;
+                flag.memory.requiredAttackers=0;
+                flag.memory.requiredClaimers = 0;
             }
             else if(this.hasThreat(creep)){
-                flag.memory.requiredAttacker=2;
-                flag.memory.requiredClaimer = 0;
+                flag.memory.requiredAttackers=2;
+                flag.memory.requiredClaimers = 0;
             }
         }
     },
