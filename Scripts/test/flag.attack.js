@@ -4,11 +4,14 @@ var flagAttack={
 
     //set required creeps
     run : function (flag){
+        flag.memory.target=flag.room.name;
         if(flag.memory.requiredAttackers==undefined) {
             flag.memory.requiredAttackers=2;
             flag.memory.requiredClaimers=1;
         }
-        
+        if(flag.memory.requiredSappers==undefined) {
+            flag.memory.requiredSappers=1;
+        }
 
 
         //initialize

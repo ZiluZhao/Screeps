@@ -100,7 +100,7 @@ var roleAttacker = {
             }
             else{
                 flag.memory.requiredAttackers=0;
-                flag.memory.requiredClaimers = 1;
+                flag.memory.requiredClaimers = 0;
             }
         }
 

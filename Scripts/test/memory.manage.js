@@ -19,6 +19,11 @@ var memoryManage={
                     var flag=Game.flags[flagName];
                     flag.memory.claimerAmount=flag.memory.claimerAmount-1;
                 }
+                else if(Memory.creeps[name].role=='sapper') {
+                    var flagName=Memory.creeps[name].flagName;
+                    var flag=Game.flags[flagName];
+                    flag.memory.sapperAmount=flag.memory.sapperAmount-1;
+                }
                 delete Memory.creeps[name];
                 console.log('Clearing non-existing creep memory:', name);
             }
