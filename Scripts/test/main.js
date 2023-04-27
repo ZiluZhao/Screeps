@@ -50,6 +50,7 @@ module.exports.loop = function () {
         else if(creep.memory.role == 'claimer') {
             roleClaimer.run(creep);
         }
+        
         else if(creep.memory.role=='sapper'){
             roleSapper.run(creep);
         }

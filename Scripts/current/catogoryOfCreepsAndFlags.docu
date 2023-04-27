@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+flag.memory.planning = {
+    'colony' : {
+        //number valued
+        minerAmount: flag.memory.minerAmount,
+        requiredMiners: flag.memory.requiredMiners,
+        haulerAmount: flag.memory.haulerAmount,
+        requiredHaulers: flag.memory.requiredHaulers,
+
+
+        miningMethod: flag.memory.miningMethod 
+    },
+
+}
+
+
+
