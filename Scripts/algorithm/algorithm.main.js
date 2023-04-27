@@ -1,7 +1,10 @@
+const algorithmSpawns = require("./algorithm.spawns");
+
+
 var algorithmMain={
     creeps : undefined,
     flags : undefined,
-    spawns : undefined,
+    spawns : algorithmSpawns,
     rooms : undefined,
 
     iterate : function (gameElements) {
